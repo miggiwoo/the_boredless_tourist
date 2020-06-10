@@ -54,6 +54,22 @@ def find_attractions(destination, interests):
                 attractions_with_interests.append(possible_attraction[0])
     return attractions_with_interests
 
-la_arts = find_attractions("Los Angeles, USA", ['art'])
+##la_arts = find_attractions("Los Angeles, USA", ['art'])
 
-print(la_arts)
+##print(la_arts)
+
+def get_attractions_for_traveler(traveler):
+    traveler_destination = traveler[1]
+    traveler_interests = traveler[2]
+    traveler_attractions = find_attractions(traveler_destination,traveler_interests)
+    interests_string ="Hi " +str(traveler[0])+ ", we think you'll like these places around " +str(traveler_destination)+": "
+    for i in range(len(traveler_attractions)):
+        if traveler_attractions[-1] == traveler_attractions[i]:
+            interests_string+= "The "+ str(traveler_attractions[i]) + "."
+        else:
+            interests_string+= "The "+ str(traveler_attractions[i]) + ", "
+    return interests_string
+
+smills_france = get_attractions_for_traveler(["Dereck Smill", "Paris, France", ["monument"]])
+
+print(smills_france)
